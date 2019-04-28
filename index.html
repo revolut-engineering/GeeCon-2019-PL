@@ -1,46 +1,199 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+	<title>Revolut Event Streaming</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+	<meta name="description" content="Revolut Event Streaming Presentation">
+	<meta name="author" content="Jacek Spolnik">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<img data-src="img/logo.png" style="background:none; border:none; box-shadow:none;" height="150">
+				<h2>Event Sourcing</h2>
+			</section>
+			<section>
+				<section>
+					<h2>Why?</h2>
+				</section>
+				<section>
+					<h3>Business Requirements</h3>
+					<ul>
+						<li>Strong Consistency</li>
+						<li>At Least Once Delivery</li>
+						<li>Persistence</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Infrastructure Requirements</h3>
+					<ul>
+						<li>High Availability & Scalability</li>
+						<li>Simplicity & Flexibility</li>
+						<li>Low Latency</li>
+						<li>Idempotency & Immutability</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Design</h2>
+				</section>
+				<section>
+					<img data-src="img/EventStore_Design.svg" height="500">
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Business Requirements</h2>
+				</section>
+				<section>
+					<h3>At Least Once Delivery</h3>
+					<ul>
+						<li>Retry on client side</li>
+						<li>Recovery on client side</li>
+						<li>Retry on server side</li>
+						<li>Retry on streaming side</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Persistence</h3>
+					<ul>
+						<li>Client Side Journal</li>
+						<li>Serer side Event Store</li>
+						<li>Consumers Snapshots</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Strong Consistency</h2>
+				</section>
+				<section>
+					<h2>TODO</h2>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Infrastructure Requirements</h2>
+				</section>
+				<section>
+					<h3>Persistance</h3>
+					<ul>
+						<li>Postgres 11</li>
+						<li>pg_partman</li>
+						<li>NOTIFY / LISTEN</li>
+						<li>Master-Slave Replication</li>
+					</ul>
+				</section>
+				<section>
+					<h3>High Availability & Scalability</h3>
+					<ul>
+						<li>Stateless Services</li>
+						<li>Asynchronous processing</li>
+						<li>Ktor & Netty & Coroutines</li>
+						<li>Horizontal & Vertical Scaling</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Simplicity & Flexibility</h3>
+					<ul>
+						<li>In-house Alpha Framework</li>
+						<li>Queries based on model definitions</li>
+						<li>Focused around JVM ecosystem</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Low Latency</h3>
+					<ul>
+						<li>Single GCP Region processing</li>
+						<li>HTTP Connection Pooling</li>
+						<li>Asynchronous Logging</li>
+						<li>GCP Internal TCP/UDP Load Balancing</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Idempotency & Immutability</h3>
+					<ul>
+						<li>Single GCP Region processing</li>
+						<li>HTTP Connection Pooling</li>
+						<li>Asynchronous Logging</li>
+						<li>GCP Internal TCP/UDP Load Balancing</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>Future Plans</section>
+				<section>
+					<h3>Model Schema</h3>
+					<ul>
+						<li>Version</li>
+						<li>Discovery</li>
+						<li>Auto Generation</li>
+						<li>Technology Agnostic</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Decrease Latency</h3>
+					<ul>
+						<li>Binary serialization protocol (now JSON)</li>
+						<li>Dedicated write master node with no indexes</li>
+						<li>HTTP2 / RSocket / Grpc</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Database Scalability</h3>
+					<ul>
+						<li>Regional Sharding</li>
+						<li>Model / Event Type Sharding</li>
+						<li>De-normalization</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Consumers</h3>
+					<ul>
+						<li>Track Consumers ACKs</li>
+						<li>Offset based subscriptions</li>
+						<li>Guaranteed Ordering</li>
+					</ul>
+				</section>
+			</section>
 		</div>
+	</div>
 
-		<script src="js/reveal.js"></script>
+	<script src="js/reveal.js"></script>
 
-		<script>
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+	<script>
+		Reveal.initialize({
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true }
+			]
+		});
+	</script>
+</body>
+
 </html>
