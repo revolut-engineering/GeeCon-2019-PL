@@ -76,9 +76,31 @@
 					<img data-src="img/EventStore_Design.svg" height="500">
 				</section>
 			</section>
+            <section>
+                <section>
+                    <h2>Business Requirements - Strong Consistency</h2>
+                </section>
+                <section>
+                    <h3>Event Persistence</h3>
+                    <ul>
+                        <li>Same Database Transaction</li>
+                        <li>Event generated and stored into Journal</li>
+                        <li>Guaranteed Local Consistency</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Event Publishing</h3>
+                    <ul>
+                        <li>Asynchronous publish just after transaction</li>
+                        <li>Mark in Journal on success</li>
+                        <li>Background reconciliation</li>
+                        <li>Server ignores duplicates</li>
+                    </ul>
+                </section>
+            </section>
 			<section>
 				<section>
-					<h2>Business Requirements</h2>
+					<h2>Business Requirements - cont.</h2>
 				</section>
 				<section>
 					<h3>At Least Once Delivery</h3>
@@ -95,28 +117,6 @@
 						<li>Client Side Journal</li>
 						<li>Serer side Event Store</li>
 						<li>Consumers Snapshots</li>
-					</ul>
-				</section>
-			</section>
-			<section>
-				<section>
-					<h2>Strong Consistency</h2>
-				</section>
-				<section>
-					<h3>Event Persistence</h3>
-					<ul>
-						<li>Same Database Transaction</li>
-						<li>Event generated and stored into Journal</li>
-						<li>Guaranteed Local Consistency</li>
-					</ul>
-				</section>
-				<section>
-					<h3>Event Publishing</h3>
-					<ul>
-						<li>Asynchronous publish just after transaction</li>
-						<li>Mark in Journal on success</li>
-						<li>Background reconciliation</li>
-						<li>Server ignores duplicates</li>
 					</ul>
 				</section>
 			</section>
