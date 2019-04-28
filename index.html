@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
 	<meta charset="utf-8">
@@ -9,6 +9,8 @@
 
 	<meta name="description" content="Revolut Event Streaming Presentation">
 	<meta name="author" content="Jacek Spolnik">
+
+	<link rel="shortcut icon" href="img/icon-48x48.png">
 
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/reveal.css">
@@ -34,9 +36,17 @@
 				<img data-src="img/logo.png" style="background:none; border:none; box-shadow:none;" height="150">
 				<h2>Event Sourcing</h2>
 			</section>
+            <section>
+                <h2>TODO</h2>
+                <ul>
+                    <li>Who Am I</li>
+                    <li>Some text can be replaced with diagrams, e.g. retries</li>
+                    <li>Presentation review</li>
+                </ul>
+            </section>
 			<section>
 				<section>
-					<h2>Why?</h2>
+					<h2>Why</h2>
 				</section>
 				<section>
 					<h3>Business Requirements</h3>
@@ -52,7 +62,9 @@
 						<li>High Availability & Scalability</li>
 						<li>Simplicity & Flexibility</li>
 						<li>Low Latency</li>
+						<li>Persistence</li>
 						<li>Idempotency & Immutability</li>
+						<li>Observability</li>
 					</ul>
 				</section>
 			</section>
@@ -91,7 +103,21 @@
 					<h2>Strong Consistency</h2>
 				</section>
 				<section>
-					<h2>TODO</h2>
+					<h3>Event Persistence</h3>
+					<ul>
+						<li>Same Database Transaction</li>
+						<li>Event generated and stored into Journal</li>
+						<li>Guaranteed Local Consistency</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Event Publishing</h3>
+					<ul>
+						<li>Asynchronous publish just after transaction</li>
+						<li>Mark in Journal on success</li>
+						<li>Background reconciliation</li>
+						<li>Server ignores duplicates</li>
+					</ul>
 				</section>
 			</section>
 			<section>
@@ -136,12 +162,41 @@
 				<section>
 					<h3>Idempotency & Immutability</h3>
 					<ul>
-						<li>Single GCP Region processing</li>
-						<li>HTTP Connection Pooling</li>
-						<li>Asynchronous Logging</li>
-						<li>GCP Internal TCP/UDP Load Balancing</li>
+						<li>Idempotent Business Actions</li>
+						<li>Immutable Events</li>
+						<li>Immutable Events Log</li>
+						<li>Handling duplicates on EventStore</li>
+						<li>Handling duplicates on Consumers</li>
 					</ul>
 				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Use Cases</h2>
+				</section>
+				<section>
+					<h3>Real Time Streaming</h3>
+					<ul>
+						<li>Model Changes</li>
+						<li>Events Streamed</li>
+						<li>Consumers acts on Event</li>
+					</ul>
+				</section>
+                <section>
+                    <h3>Analytics Streaming</h3>
+                    <ul>
+                        <li>All Model Changes</li>
+                        <li>Events Stream</li>
+                        <li>Analytics processing</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Event Sourcing</h3>
+                    <ul>
+                        <li>Query Events</li>
+                        <li>Audit / Log</li>
+                    </ul>
+                </section>
 			</section>
 			<section>
 				<section>Future Plans</section>
@@ -179,6 +234,10 @@
 					</ul>
 				</section>
 			</section>
+            <section>
+                <img data-src="img/logo.png" style="background:none; border:none; box-shadow:none;" height="150">
+                <h2>Q&A</h2>
+            </section>
 		</div>
 	</div>
 
