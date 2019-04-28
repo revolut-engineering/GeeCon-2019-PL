@@ -64,7 +64,6 @@
                 <h2>TODO</h2>
                 <ul>
 					<li>Presentation review</li>
-                    <li>Some text can be replaced with diagrams, e.g. retries</li>
 					<li>Code Examples</li>
 					<li>Observability</li>
 					<li>What can be on demo? Will be enough time? NewRelic?</li>
@@ -80,7 +79,6 @@
 					<ul>
 						<li>Strong Consistency</li>
 						<li>At Least Once Delivery</li>
-						<li>Model Events Guaranteed Ordering</li>
 					</ul>
 				</section>
 				<section>
@@ -106,44 +104,18 @@
             <section>
                 <section>
                     <h2>Business Requirements</h2>
-                    <p>Strong Consistency</p>
                 </section>
                 <section>
-					<p>Event Persistence</p>
+					<p>Strong Consistency - Event Persistence</p>
 					<img data-src="img/EventStore_Persistence.svg">
                 </section>
 				<section>
-					<p>Event Publishing</p>
+					<p>Strong Consistency - Event Publishing</p>
 					<img data-src="img/EventStore_Publishing.svg">
 				</section>
-            </section>
-			<section>
 				<section>
-					<h2>Business Requirements</h2>
-                    <p>At Least Once Delivery</p>
-				</section>
-				<section>
-					<h3>At Least Once Delivery</h3>
-					<ul>
-						<li>Retry on client side</li>
-						<li>Recovery on client side</li>
-						<li>Retry on server side</li>
-						<li>Retry on streaming side</li>
-					</ul>
-				</section>
-			</section>
-            <section>
-				<section>
-					<h2>Business Requirements</h2>
-                    <p>Model Events Guaranteed Ordering</p>
-				</section>
-				<section>
-					<h3>Model Events Guaranteed Ordering</h3>
-					<ul>
-						<li>Stored Date as streaming snapshot</li>
-						<li>Stream Ordering after NOTIFY</li>
-						<li>Consumers Snapshot based on Stored Date</li>
-					</ul>
+					<p>At Least Once Delivery</p>
+					<img data-src="img/EventStore_Streaming.svg">
 				</section>
 			</section>
 			<section>
