@@ -53,7 +53,7 @@
 					<ul>
 						<li>Strong Consistency</li>
 						<li>At Least Once Delivery</li>
-						<li>Persistence</li>
+						<li>Model Events Guaranteed Ordering</li>
 					</ul>
 				</section>
 				<section>
@@ -78,14 +78,15 @@
 			</section>
             <section>
                 <section>
-                    <h2>Business Requirements - Strong Consistency</h2>
+                    <h2>Business Requirements</h2>
+                    <p>Strong Consistency</p>
                 </section>
                 <section>
                     <h3>Event Persistence</h3>
                     <ul>
-                        <li>Same Database Transaction</li>
-                        <li>Event generated and stored into Journal</li>
-                        <li>Guaranteed Local Consistency</li>
+                        <li>Client Side Journal</li>
+                        <li>Serer side Event Store</li>
+                        <li>Consumers Snapshots</li>
                     </ul>
                 </section>
                 <section>
@@ -100,7 +101,8 @@
             </section>
 			<section>
 				<section>
-					<h2>Business Requirements - cont.</h2>
+					<h2>Business Requirements</h2>
+                    <p>At Least Once Delivery</p>
 				</section>
 				<section>
 					<h3>At Least Once Delivery</h3>
@@ -111,12 +113,18 @@
 						<li>Retry on streaming side</li>
 					</ul>
 				</section>
+			</section>
+            <section>
 				<section>
-					<h3>Persistence</h3>
+					<h2>Business Requirements</h2>
+                    <p>Model Events Guaranteed Ordering</p>
+				</section>
+				<section>
+					<h3>Model Events Guaranteed Ordering</h3>
 					<ul>
-						<li>Client Side Journal</li>
-						<li>Serer side Event Store</li>
-						<li>Consumers Snapshots</li>
+						<li>Stored Date as streaming snapshot</li>
+						<li>Stream Ordering after NOTIFY</li>
+						<li>Consumers Snapshot based on Stored Date</li>
 					</ul>
 				</section>
 			</section>
@@ -199,7 +207,7 @@
                 </section>
 			</section>
 			<section>
-				<section>Future Plans</section>
+				<section><h2>Future Plans</h2></section>
 				<section>
 					<h3>Model Schema</h3>
 					<ul>
@@ -230,13 +238,13 @@
 					<ul>
 						<li>Track Consumers ACKs</li>
 						<li>Offset based subscriptions</li>
-						<li>Guaranteed Ordering</li>
+						<li>Ordering For multi-thread Consumers processing</li>
 					</ul>
 				</section>
 			</section>
             <section>
                 <img data-src="img/logo.png" style="background:none; border:none; box-shadow:none;" height="150">
-                <h2>Q&A</h2>
+                <h3>Q&A</h3>
             </section>
 		</div>
 	</div>
