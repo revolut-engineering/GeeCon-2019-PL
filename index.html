@@ -63,8 +63,6 @@
             <section>
                 <h2>TODO</h2>
                 <ul>
-					<li>Presentation review</li>
-					<li>Code Examples</li>
 					<li>Observability</li>
 					<li>What can be on demo? Will be enough time? NewRelic?</li>
 					<li>Some ES facts? E.g. db size, # of events per day/week?</li>
@@ -72,58 +70,80 @@
             </section>
 			<section>
 				<section>
-					<h2>Why</h2>
+					<h2>Context</h2>
 				</section>
 				<section>
-					<h3>Business Requirements</h3>
+					<h3>Money</h3>
 					<ul>
-						<li>Strong Consistency</li>
-						<li>At Least Once Delivery</li>
+						<li>Highly regulated</li>
+						<li>Correctness of domain</li>
 					</ul>
 				</section>
 				<section>
-					<h3>Infrastructure Requirements</h3>
+					<h3>Rapid Growth</h3>
 					<ul>
+						<li>Huge amount of data</li>
+						<li>Huge traffic, spikes</li>
+						<li>Need for horizontal scalability</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Why</h2>
+				</section>
+				<section>
+					Revolut's business events audit and distribution.
+					<ul>
+						<li>Always Correct</li>
+						<li>Highly Available</li>
+						<li>Durable for a long time (+10 years)</li>
+						<li>Immutable</li>
+						<li>Queryable (Advanced queries)</li>
+						<li>Scalable with ever growing amount of events</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Requirements</h3>
+					<ul>
+						<li>Strong Consistency</li>
+						<li>At Least Once Delivery</li>
 						<li>High Availability & Scalability</li>
-						<li>Simplicity & Flexibility</li>
 						<li>Low Latency</li>
 						<li>Persistence</li>
-						<li>Idempotency & Immutability</li>
 						<li>Observability</li>
 					</ul>
 				</section>
 			</section>
 			<section>
 				<section>
-					<h2>Design</h2>
-				</section>
-				<section>
+					<p>Design</p>
 					<img data-src="img/EventStore_Design.svg" height="500">
 				</section>
 			</section>
             <section>
                 <section>
-                    <h2>Business Requirements</h2>
+                    <h2>Always Correct</h2>
                 </section>
                 <section>
-					<p>Strong Consistency - Event Persistence</p>
+					<p>Event Persistence</p>
 					<img data-src="img/EventStore_Persistence.svg">
                 </section>
 				<section>
-					<p>Strong Consistency - Event Publishing</p>
+					<p>Event Publishing</p>
 					<img data-src="img/EventStore_Publishing.svg">
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Requirements</h2>
 				</section>
 				<section>
 					<p>At Least Once Delivery</p>
 					<img data-src="img/EventStore_Streaming.svg">
 				</section>
-			</section>
-			<section>
 				<section>
-					<h2>Infrastructure Requirements</h2>
-				</section>
-				<section>
-					<h3>Persistance</h3>
+					<h3>Persistence</h3>
 					<ul>
 						<li>Postgres 11</li>
 						<li>pg_partman</li>
@@ -141,14 +161,6 @@
 					</ul>
 				</section>
 				<section>
-					<h3>Simplicity & Flexibility</h3>
-					<ul>
-						<li>In-house Alpha Framework</li>
-						<li>Queries based on model definitions</li>
-						<li>Focused around JVM ecosystem</li>
-					</ul>
-				</section>
-				<section>
 					<h3>Low Latency</h3>
 					<ul>
 						<li>Single GCP Region processing</li>
@@ -158,57 +170,99 @@
 					</ul>
 				</section>
 				<section>
-					<h3>Idempotency & Immutability</h3>
+					<h3>Immutability</h3>
 					<ul>
-						<li>Idempotent Business Actions</li>
 						<li>Immutable Events</li>
 						<li>Immutable Events Log</li>
-						<li>Handling duplicates on EventStore</li>
-						<li>Handling duplicates on Consumers</li>
 					</ul>
 				</section>
 			</section>
 			<section>
 				<section>
-					<h2>Use Cases</h2>
+					<h2>Client SDK</h2>
 				</section>
 				<section>
-					<h3>Real Time Streaming</h3>
-					<ul>
-						<li>Model Changes</li>
-						<li>Events Streamed</li>
-						<li>Consumers acts on Event</li>
-					</ul>
+					Publishing
+					<pre><code data-trim data-noescape>
+						var config = new PublisherConfig(
+							URI.create("http://host:port"));
+
+						var persister = AlphaEventPersister
+							.withConfig(config)
+							.withAsyncPublisher();
+
+						// create event ...
+						persister.save(actionEvent);
+					</code></pre>
 				</section>
-                <section>
-                    <h3>Analytics Streaming</h3>
-                    <ul>
-                        <li>All Model Changes</li>
-                        <li>Events Stream</li>
-                        <li>Analytics processing</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Event Sourcing</h3>
-                    <ul>
-                        <li>Query Events</li>
-                        <li>Audit / Log</li>
-                    </ul>
-                </section>
+				<section>
+					Fetching
+					<pre><code data-trim data-noescape>
+						var eventStore = EventStore
+							.withConfig(config)
+							.withDefaultHttpClient();
+
+						var filter = filterBy("Account")
+							.eventTypeEq("BalanceChangedEvent");
+
+						var query = EventQuery
+							.from(from).withTo(to)
+							.withModelTypeFilter(filter)
+							.build();
+
+						var events = eventStore.fetchEvents(query);
+						// further processing ...
+					</code></pre>
+				</section>
+				<section>
+					Streaming - Consumer
+					<pre><code data-trim data-noescape>
+						class MyEventConsumer implements EventStoreConsumer {
+							@Override
+							public void onEvent(ModelEvent event) {
+								// process event
+							}
+						}
+					</code></pre>
+				</section>
+				<section>
+					Streaming - Subscription
+					<pre><code data-trim data-noescape>
+						SnapshotTimestampProvider from =
+							() -> figureOutLatestTimestampToReconnectFrom();
+
+						var eventStore = EventStore.withConfig(config);
+
+						var query = filterBy("Account")
+							.eventTypeEq("BalanceChangedEvent");
+
+						var consumer = new MyEventConsumer();
+
+						var subscription =
+							eventStore.subscribe(from, query, consumer);
+
+						subscription.start().get;
+					</code></pre>
+				</section>
 			</section>
 			<section>
-				<section><h2>Future Plans</h2></section>
 				<section>
-					<h3>Model Schema</h3>
+					Use Cases
 					<ul>
-						<li>Version</li>
-						<li>Discovery</li>
-						<li>Auto Generation</li>
-						<li>Technology Agnostic</li>
+						<li>meaningful audit log of user actions used by customer service</li>
+						<li>realtime fraud detection with event-driven ML-based risk scoring model</li>
+						<li>automatic real-time FX risk hedging</li>
+						<li>real-time PnL</li>
+						<li>automated marketing campaigns, promotions</li>
 					</ul>
 				</section>
+			</section>
+			<section>
 				<section>
-					<h3>Decrease Latency</h3>
+					<h2>Challenges</h2>
+				</section>
+				<section>
+					Achieve p99 of <= 20ms
 					<ul>
 						<li>Binary serialization protocol (now JSON)</li>
 						<li>Dedicated write master node with no indexes</li>
@@ -216,19 +270,20 @@
 					</ul>
 				</section>
 				<section>
-					<h3>Database Scalability</h3>
+					Events Schema
+					<ul>
+						<li>Versioning</li>
+						<li>Discovery</li>
+						<li>Auto Generation</li>
+						<li>Technology Agnostic</li>
+					</ul>
+				</section>
+				<section>
+					Database Scalability
 					<ul>
 						<li>Regional Sharding</li>
 						<li>Model / Event Type Sharding</li>
 						<li>De-normalization</li>
-					</ul>
-				</section>
-				<section>
-					<h3>Consumers</h3>
-					<ul>
-						<li>Track Consumers ACKs</li>
-						<li>Offset based subscriptions</li>
-						<li>Ordering For multi-thread Consumers processing</li>
 					</ul>
 				</section>
 			</section>
