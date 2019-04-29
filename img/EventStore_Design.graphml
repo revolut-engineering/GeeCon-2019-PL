@@ -67,7 +67,7 @@ Replica DB<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y
     <node id="n4">
       <data key="d6">
         <y:GenericNode configuration="BevelNode2">
-          <y:Geometry height="47.612998962402344" width="136.0" x="104.28099822998047" y="257.1070022583008"/>
+          <y:Geometry height="47.612998962402344" width="136.0" x="104.28099822998047" y="308.0265007019043"/>
           <y:Fill color="#0075EB" color2="#0075EB" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="90.7890625" x="22.60546875" xml:space="preserve" y="7.673686981201172">Microservice
@@ -122,7 +122,7 @@ Event Reader<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel>
     <node id="n9">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="24.0" width="136.0" x="104.28099822998047" y="304.7200012207031"/>
+          <y:Geometry height="24.0" width="136.0" x="104.28099822998047" y="355.63949966430664"/>
           <y:Fill color="#EB008D" transparent="false"/>
           <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="126.68359375" x="4.658203125" xml:space="preserve" y="2.93359375">eventstore-publisher<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
@@ -133,28 +133,6 @@ Event Reader<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel>
     <node id="n10">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="24.0" width="136.0" x="104.28099822998047" y="330.0265007019043"/>
-          <y:Fill color="#EB008D" transparent="false"/>
-          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="103.755859375" x="16.1220703125" xml:space="preserve" y="2.93359375">eventstore-alpha<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
-          <y:Shape type="rectangle"/>
-        </y:ShapeNode>
-      </data>
-    </node>
-    <node id="n11">
-      <data key="d6">
-        <y:ShapeNode>
-          <y:Geometry height="24.0" width="136.0" x="104.28099822998047" y="355.63949966430664"/>
-          <y:Fill color="#EB008D" transparent="false"/>
-          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="84.33203125" x="25.833984375" xml:space="preserve" y="2.93359375">alpha-actions<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
-          <y:Shape type="rectangle"/>
-        </y:ShapeNode>
-      </data>
-    </node>
-    <node id="n12">
-      <data key="d6">
-        <y:ShapeNode>
           <y:Geometry height="24.0" width="136.0" x="104.28099822998047" y="457.252498626709"/>
           <y:Fill color="#EB008D" transparent="false"/>
           <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
@@ -163,7 +141,7 @@ Event Reader<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n13">
+    <node id="n11">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="24.0" width="136.0" x="104.28099822998047" y="558.8654975891113"/>
@@ -174,7 +152,7 @@ Event Reader<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n14">
+    <node id="n12">
       <data key="d6">
         <y:SVGNode>
           <y:Geometry height="41.72100067138672" width="41.71900177001953" x="316.28099822998047" y="412.58549880981445"/>
@@ -213,7 +191,7 @@ EventStore<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e2" source="n14" target="n0">
+    <edge id="e2" source="n12" target="n0">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -234,11 +212,11 @@ EventStore<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e4" source="n4" target="n14">
+    <edge id="e4" source="n4" target="n12">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="337.14049911499023" y="280.91350173950195"/>
+            <y:Point x="337.14049911499023" y="331.83300018310547"/>
           </y:Path>
           <y:LineStyle color="#EEEEEE" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -246,7 +224,7 @@ EventStore<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e5" source="n14" target="n5">
+    <edge id="e5" source="n12" target="n5">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -258,7 +236,7 @@ EventStore<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e6" source="n14" target="n6">
+    <edge id="e6" source="n12" target="n6">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
