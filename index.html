@@ -219,11 +219,11 @@
 						}
 
 						var subscription = EventStore.withConfig(config).subscribe(
-							() -> figureOutLatestTimestampToReconnectFrom(),
+							() -> latestTimestampToReconnectFrom(),
 							filterBy("Account")
 								.eventTypeEq("BalanceChangedEvent"),
 							new MyEventConsumer());
-						subscription.start().get();
+						subscription.start();
 					</code></pre>
 				</section>
 			</section>
