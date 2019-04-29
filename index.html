@@ -215,7 +215,7 @@
 					</code></pre>
 				</section>
 				<section>
-					Streaming - Consumer
+					Streaming
 					<pre><code data-trim data-noescape>
 						class MyEventConsumer implements EventStoreConsumer {
 							@Override
@@ -223,25 +223,12 @@
 								// process event
 							}
 						}
-					</code></pre>
-				</section>
-				<section>
-					Streaming - Subscription
-					<pre><code data-trim data-noescape>
-						SnapshotTimestampProvider from =
-							() -> figureOutLatestTimestampToReconnectFrom();
 
-						var eventStore = EventStore.withConfig(config);
-
-						var query = filterBy("Account")
-							.eventTypeEq("BalanceChangedEvent");
-
-						var consumer = new MyEventConsumer();
-
-						var subscription =
-							eventStore.subscribe(from, query, consumer);
-
-						subscription.start().get;
+						var subscription = EventStore.withConfig(config).subscribe(
+							() -> figureOutLatestTimestampToReconnectFrom(),
+							filterBy("Account").eventTypeEq("BalanceChangedEvent"),
+							new MyEventConsumer());
+						subscription.start().get();
 					</code></pre>
 				</section>
 			</section>
