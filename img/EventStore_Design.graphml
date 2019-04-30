@@ -123,18 +123,17 @@ Event Reader<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel>
       </data>
     </node>
     <node id="n10">
-      <data key="d5"/>
       <data key="d6">
         <y:ImageNode>
           <y:Geometry height="50.0" width="50.0" x="298.7698736190796" y="405.5"/>
           <y:Fill color="#CCCCFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="23.0" y="23.0"/>
           <y:Image alphaImage="true" refid="1"/>
         </y:ImageNode>
       </data>
     </node>
     <node id="n11">
-      <data key="d5"/>
       <data key="d6">
         <y:ImageNode>
           <y:Geometry height="50.0" width="50.0" x="733.0" y="307.5"/>
@@ -147,7 +146,6 @@ Master DB</y:NodeLabel>
       </data>
     </node>
     <node id="n12">
-      <data key="d5"/>
       <data key="d6">
         <y:ImageNode>
           <y:Geometry height="50.0" width="50.0" x="733.0" y="430.5"/>
@@ -186,10 +184,7 @@ Replica DB</y:NodeLabel>
     <edge id="e2" source="n10" target="n0">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="-2.258749008178711" ty="4.139499664306641">
-            <y:Point x="405.3849368095398" y="430.5"/>
-            <y:Point x="405.3849368095398" y="434.63949966430664"/>
-          </y:Path>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#EEEEEE" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
